@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar primary>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Elite Schedule - {{team.name}}</ion-title>
+   </ion-navbar>
+</ion-header>
+
+<ion-tabs>
+  <ion-tab tabTitle="Team" [root]="teamDetailTab" [rootParams]="team" tabIcon="basketball"></ion-tab>
+  <ion-tab tabTitle="Standings" [root]="standingsTab" [rootParams]="team" tabIcon="podium"></ion-tab>
+</ion-tabs>
