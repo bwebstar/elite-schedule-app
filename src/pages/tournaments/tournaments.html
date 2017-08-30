@@ -9,6 +9,7 @@
 
 <ion-content padding>
   <h3>These are the upcoming tournaments.</h3>
-<button ion-button primary (click)="goToTeam()">Go To Team</button>
-<!--<button ion-item primary * ngFor="let item of tournaments" (click)="itemTapped($event, item)">{{item.name}}</button>-->
+<ion-list>
+<button ion-item primary *ngFor="let item of tournaments" (click)="itemTapped($event, item)">{{item.name}}</button>
+</ion-list>
 </ion-content>
