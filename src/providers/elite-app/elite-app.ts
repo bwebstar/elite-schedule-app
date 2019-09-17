@@ -1,28 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class EliteAppProvider {
 
-  private baseUrl = 'https://elite-schedule-app-i2-d0dc4.firebaseio.com';
-  currentTourney: any = {};
+  data: any; 
 
-  constructor(private http: Http) {}
+  constructor(public http: Http) {}
 
-  getTournaments(){
-    return new Promise(resolve => {
-      this.http.get(`${this.baseUrl}/tournaments.json`)
-      .subscribe(res => resolve(res.json()));
-    });
+ baseUrl = 'https://elite-schedule-app-i2-d0dc4.firebaseio.com/tournaments.json';
+
+getTournaments(){
+  if (this.data) {
+    return Promise.resolve(this.data);
   }
 
-  getTournamentData(tourneyId){
-    return this.http.get(`${this.baseUrl}/tournaments-data/${tourneyId}.json`)
-    .map((response: Response) => {
-      this.currentTourney = response.json();
-      return this.currentTourney;
-    });
+  return new Promise(resolve => {
+    this.http.get(this.baseUrl)
+      .map(res => res.json())
+      .subscribe(data => {
+        this.data = data;
+        resolve(this.data);
+      });
+  });
 
-  }
+}
 }

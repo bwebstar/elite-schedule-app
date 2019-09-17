@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TeamsPage } from '../teams/teams';
-import { EliteAppProvider } from '../../providers/elite-app/elite-app';
 
 @IonicPage()
 @Component({
@@ -10,19 +9,57 @@ import { EliteAppProvider } from '../../providers/elite-app/elite-app';
 })
 export class TournamentsPage {
 
-  tournaments: any;
+  // constructor(private navCtrl: NavController, private navParams: NavParams) {
+  // }
 
-  constructor(private nav: NavController,
-              private eliteAppProvider: EliteAppProvider) {
-  }
-
-  itemTapped($event, tourney){
-    this.nav.push(TeamsPage, tourney);
+    constructor(private navCtrl: NavController) {
   }
 
   ionViewDidLoad() {
-        this.eliteAppProvider.getTournaments()
-        .then(data => this.tournaments = data);
+    console.log('ionViewDidLoad TournamentsPage');
+  }
+
+
+  goToTeam(){
+      this.navCtrl.push(TeamsPage);
+  }
+
+    itemTapped(){
+      this.navCtrl.push(TeamsPage);
   }
 
 }
+
+// import { Component } from '@angular/core';
+// import { IonicPage, NavController, NavParams } from 'ionic-angular';
+// import { TeamsPage } from '../teams/teams';
+// import { EliteAppProvider } from '../../providers/elite-app/elite-app';
+
+// @IonicPage()
+// @Component({
+//   selector: 'page-tournaments',
+//   templateUrl: 'tournaments.html',
+// })
+// export class TournamentsPage {
+
+//   tournaments: any;
+
+//     constructor(private navCtrl: NavController, private eliteAppProvider: EliteAppProvider) {
+//   }
+
+//   ionViewLoaded() {
+//       this.eliteAppProvider.getTournaments()
+//       .then(data => {
+//       this.tournaments = data});
+//   }
+
+//   goToTeam(){
+//       this.navCtrl.push(TeamsPage);
+//   }
+
+//   itemTapped($event, tourney){
+//       this.navCtrl.push(TeamsPage, tourney);
+//   }
+
+// }
+
