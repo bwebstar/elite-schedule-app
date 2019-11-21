@@ -1,0 +1,7 @@
+{
+  "appId": "com.eliteschedule.app",
+  "appName": "EliteSchedule",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
